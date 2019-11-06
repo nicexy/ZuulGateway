@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Zuul-Gateway
+server:
+  port: 12580
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      url: http://localhost:8082  #所有符合/api-a/**规则的访问都将被路由转发到http://localhost:8082/地址上
+    api-b:
+      path: /api-b/**
+      serviceId: Server-Client
+    api-c:
+      path: /api-c/**
+      serviceId: Server-Consumer
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
